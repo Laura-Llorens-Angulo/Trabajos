@@ -1,0 +1,70 @@
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    width: 80%;
+    margin: 2em 0;
+}
+h1 {
+    color: blue;
+    font-size: 2.6em;
+}
+h2.sin-separacion-superior {
+    margin-top: 0px;
+}
+.fila {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: stretch;
+}
+table.lista-valoraciones, table.lista-valoraciones th {
+    text-align: center;
+}
+table.lista-valoraciones tbody tr:hover {
+    background-color: #ddecec;
+}
+table.lista-valoraciones th, table.lista-valoraciones td {
+    padding-left: 3px;
+    padding-right: 3px;
+}
+th {
+    text-align: left;
+    width: 125px;
+    /*background-color: rgba(66, 223, 66, 0.537);*/
+}
+th.vacio {
+    background-color: unset;
+}
+th.more-width {
+    width: fit-content;
+}
+td.center {
+    text-align: center;
+}
+td input[type=text] {
+    width: 180px;
+}
+td input[type=text].largo {
+    width: 280px;
+}
+td input[type=text].half {
+    width: 50%;
+}
+td input[type=number] {
+    width: 50px;
+}
+td.mt10 input[type=submit] {
+    margin-top: 10px;
+}
+label {
+    display: block;
+    width: 125px;
+}
+a.retorno-menu {
+    margin-top: 20px;
+}

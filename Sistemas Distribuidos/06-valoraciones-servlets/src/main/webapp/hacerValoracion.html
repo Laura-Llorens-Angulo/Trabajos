@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>ValoraRest</title>
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+
+    <h2>Formulario de valoración</h2>
+
+    <form action="ServletHacerValoracion" method="POST">
+        <table>
+            <tr>
+                <th class="more-width">Restaurante:</th>
+                <td><input class="largo" type="text" name="nombreRestaurante" autofocus required></td>
+            </tr>
+            <tr>
+                <th class="more-width">Estrellas (0..5):</th>
+                <td><input type="number" name="estrellas" min="0" max="5" required></td>
+            </tr>
+            <tr>
+                <th class="more-width">Comentario:</th>
+                <td><input class="largo" type="text" name="comentario" required></td>
+            </tr>
+
+            <tr><td colspan="2" class="center"><input type="submit" value="Haz Valoración"></td></tr>
+        </table>
+    </form>
+
+    </body>
+</html>
