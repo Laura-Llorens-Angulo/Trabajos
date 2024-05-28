@@ -1,0 +1,15 @@
+INSERT INTO clientes ( codcli , nombre , telefono , direccion , codpostal , pueblo ) VALUES ( 108 , ' BLASCO ESCUREDO ,CESAR LUIS ' , ' 663767543 ' , ' ALFONDEGUILLA , 127 ' , ' 44953 ' , ' FORMICHE ALTO ' ) ;
+
+INSERT INTO clientes ( codcli , nombre , telefono , direccion , codpostal , pueblo ) VALUES ( 117 , ' HERRERO ORENGA , FRANCISCO TEO ' , ' 636547699 ' , ' AVENIDA CAPUCHINOS , 149 ' , ' 35476 ' , ' OASIS ' ) ;
+
+INSERT INTO vips ( codcli , fact_umbral , dto ) VALUES ( 108 , 10000 , 3 ) ;
+
+INSERT INTO jovenes ( codcli , dto ) VALUES ( 117 , 10 ) ;
+
+INSERT INTO articulos ( codart , descrip , precio , stock , stock_min ,dto ) VALUES ( ' im4P40L ' , ' Interruptor Magnetotermico F -n , 3 ' , 42.31 , 1 , 1 , 10 ) ;
+
+INSERT INTO articulos ( codart , descrip , precio , stock , stock_min , dto ) VALUES ( ' P605L ' , ' Caja 2 Elem . Plastimetal ' , 2.74 , 2 , 1 , 10 ) ;
+
+INSERT INTO articulos ( codart , descrip , precio , stock , stock_min , dto ) VALUES ( ' L77211 ' , ' Pieza Y Placa 6-6 E . Legrand Seri ' , 0.97 , NULL ,NULL , 8 ) ;
+
+INSERT INTO articulos ( codart , descrip , precio , stock , stock_min , dto ) VALUES ( ' L30 ' , ' Pieza Y Placa 7 -7 E . Legrand Seri ' , 1.99 , NULL , NULL , 10 ) ;
