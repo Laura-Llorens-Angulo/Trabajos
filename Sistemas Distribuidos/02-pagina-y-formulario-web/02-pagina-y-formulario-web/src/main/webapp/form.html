@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Haz una valoración</title>
+    <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+
+    <img src="../resources/stars.svg" alt="">
+
+    <h1>Haz una valoración</h1>
+
+    <form action="" method="get">
+      <table>
+        <tbody>
+          <tr>
+            <th>
+              <label for="cuenta_radio">Cuenta:</label>
+            </th>
+            <td>
+              <input type="radio" name="cuenta" value="estandar" id="cuenta_radio" required> Estándar
+              <input type="radio" name="cuenta" value="premium" id="cuenta_radio" required> Premium
+            </td>
+            <th class="vacio"></th>
+            <td></td>
+          </tr>
+  
+          <tr>
+            <th>
+              <label for="cod_cliente">Código de cliente:</label>
+            </th>
+            <td>
+              <input class="half" type="text" name="cod_cliente" id="cod_cliente" required>
+            </td>
+            <th class="vacio"></th>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <th><label for="restaurante">Restaurante:</label></th>
+            <td><input type="text" name="restaurante" id="restaurante" maxlength="40" required></td>
+            <th><label for="tipo_restaurante">Tipo:</label></th>
+            <td>
+              <select name="tipo_restaurante" id="tipo_restaurante" required>
+                <option disabled selected value> -- Selecciona una opción -- </option>
+                <option value="español">Español</option>
+                <option value="italiano">Italiano</option>
+                <option value="chino">Chino</option>
+                <option value="otro">Otro</option>
+              </select>
+            </td>
+          </tr>
+          
+          <tr>
+            <th><label for="fecha">Fecha:</label></th>
+            <td><input type="date" name="fecha" id="fecha" required></td>
+            <th class="vacio"></th>
+            <td></td>
+          </tr>
+          
+          <tr>
+            <th><label for="estrellas">Estrellas (0..5):</label></th>
+            <td><input type="number" name="estrellas" id="estrellas" min="0" max="5" required></td>
+            <th><label for="comentario">Comentario:</label></th>
+            <td><input type="text" name="comentario" id="comentario" maxlength="40" required></td>
+          </tr>
+
+          <tr>
+            <td colspan="4" class="center"><input type="submit">Valora</input></td>
+          </tr>
+        </tbody>
+      </table>
+    </form>
+
+  </body>
+</html>

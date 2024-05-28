@@ -1,0 +1,45 @@
+body {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+img {
+    width: 80%;
+    margin: 2em 0;
+}
+h1 {
+    color: blue;
+    font-size: 2.6em;
+}
+.fila {
+    display: flex;
+    flex-direction: row;
+    align-content: flex-start;
+    justify-content: center;
+    align-items: stretch;
+}
+th {
+    text-align: left;
+    width: 125px;
+    background-color: rgba(66, 223, 66, 0.537);
+}
+th.vacio {
+    background-color: unset;
+}
+td.center {
+    text-align: center;
+}
+td input[type=text] {
+    width: 270px;
+}
+td input[type=text].half {
+    width: 50%;
+}
+td input[type=number] {
+    width: 50px;
+}
+label {
+    display: block;
+    width: 125px;
+}
