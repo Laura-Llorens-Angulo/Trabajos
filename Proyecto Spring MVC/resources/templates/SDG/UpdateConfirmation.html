@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Estado de la iniciativa</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h2>SDG modificada</h2>
+  <p>Has <strong>modificado</strong> correctamente la iniciativa.</p>
+  <form th:object="${SDG}">
+    <div class="form-row">
+      <div class="form-group col-md-9">
+        <label for="codini">Título SDG</label>
+        <input type="text" class="form-control" id="codini" th:field="*{name}" readonly="readonly">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="codsdg">Código SDG</label>
+        <input type="text" class="form-control" id="codsdg" th:field="*{codSDG}" readonly="readonly">
+      </div>
+    </div>
+    <div class="form-group">
+      <label for="description">Descripción</label>
+      <input type="text" class="form-control" id="description" th:field="*{description}" readonly="readonly">
+    </div>
+    <div class="form-row">
+      <div class="form-group col-md-9">
+        <label for="url">URL</label>
+        <input type="text" class="form-control" id="url" th:field="*{URL}" readonly="readonly">
+      </div>
+      <div class="form-group col-md-3">
+        <label for="relevance">Relevancia</label>
+        <input type="text" class="form-control" id="relevance" th:field="*{relevance}" readonly="readonly">
+      </div>
+    </div>
+    <div class="form-group d-flex align-items-center justify-content-between">
+      <div class="flex-grow-1"></div>
+      <a th:href="@{/SDG/list/0}" class="btn btn-primary float-right">Volver</a>
+    </div>
+  </form>
+</div>
+</body>
+</html>

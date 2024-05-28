@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Estado de la iniciativa</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+
+  <h2>Iniciativa modificada</h2>
+  <p>Has <strong>modificado</strong> correctamente la iniciativa.</p>
+  <div class="form-row">
+    <div class="form-group col-md-6">
+      <label for="codini">Título iniciativa</label>
+      <input type="text" class="form-control" id="codini" th:field="*{initiative.title}" readonly="readonly">
+    </div>
+    <div class="form-group col-md-6">
+      <label for="codsdg">Código SDG</label>
+      <input type="text" class="form-control" id="codsdg" th:field="*{initiative.codSDG}" readonly="readonly">
+    </div>
+  </div>
+  <div class="form-group">
+    <label for="description">Descripción</label>
+    <input type="text" class="form-control" id="description" th:field="*{initiative.description}" readonly="readonly">
+  </div>
+  <div class="form-row">
+    <div class="form-group col-md-4">
+      <label for="state">Estado</label>
+      <input type="text" class="form-control" id="state" th:field="*{initiative.state}" readonly="readonly">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="fechaIni">Fecha Inicio</label>
+      <input type="text" class="form-control" id="fechaIni" th:field="*{initiative.fechaIni}" readonly="readonly">
+    </div>
+    <div class="form-group col-md-4">
+      <label for="fechaFin">Fecha Fin</label>
+      <input type="text" class="form-control" id="fechaFin" th:field="*{initiative.fechaFin}" readonly="readonly">
+    </div>
+  </div>
+
+  <div class="form-group d-flex align-items-center justify-content-between">
+    <div class="flex-grow-1"></div>
+    <a th:href="@{/initiative/list/0}" class="btn btn-primary float-right">Volver</a>
+  </div>
+</div>
+</body>
+</html>

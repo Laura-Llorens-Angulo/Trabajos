@@ -1,0 +1,9 @@
+<div class="loggeduser" th:object="${session}" xmlns:th="http://www.w3.org/1999/xhtml">
+  <p th:if="*{user == null}">
+    No autentificado <a href="/login" th:href="@{/login}">Entrar</a>
+  </p>
+  <p th:unless="*{user == null}">
+    Autentificado como <span th:text="*{user.name}"></span>   (<span th:text="*{user.type}"></span>) <a
+          href="/logout" th:href="@{/logout}">Salir</a>
+  </p>
+</div>

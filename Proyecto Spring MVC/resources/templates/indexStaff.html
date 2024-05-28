@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IniciativasPendientes </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Iniciativas Pendientes</h1>
+        <div th:if="${#lists.isEmpty(pendientes)}">
+            No hay iniciativas pendientes de aprobar.
+        </div>
+        <table th:unless="${#lists.isEmpty(pendientes)}" class="table table-striped">
+            <thead>
+            <tr>
+                <th>Correo del responsable</th>
+                <th>Título</th>
+                <th>Fecha de inicio</th>
+                <th>Fecha de fin</th>
+                <th>Estado</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="initiative: ${pendientes}">
+                <td th:text="${initiative.mailResponsable}"></td>
+                <td th:text="${initiative.title}"></td>
+                <td th:text="${initiative.fechaIni}"></td>
+                <td th:text="${initiative.fechaFin}"></td>
+                <td th:text="${initiative.state}"></td>
+                <td>
+                    <a th:href="@{/initiative/info/{codInitiative}(codInitiative=${initiative.codInitiative})}" class="btn btn-warning">Detalles</a>
+                </td>
+                <td>
+                    <a th:href="@{/initiative/accept/{codInitiative}(codInitiative=${initiative.codInitiative})}" th:onclick="return confirm('¿Está seguro de que desea aceptar la iniciativa ' + [[${initiative.title}]] + '?');" class="btn btn-warning">Aceptar</a>
+                    <a th:href="@{/initiative/refuse/{codInitiative}(codInitiative=${initiative.codInitiative})}" th:onclick="return confirm('¿Está seguro de que desea rechazar la iniciativa ' + [[${initiative.title}]] + '?');" class="btn btn-danger">Rechazar</a>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Lista participantes</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Lista participantes iniciativa: <span th:text="${titleIni}"></span></h1>
+  <div th:if="${#lists.isEmpty(participants)}">
+    No hay participantes en tu iniciativa
+  </div>
+  <table th:unless="${#lists.isEmpty(participants)}" class="table table-striped">
+    <thead>
+    <tr>
+      <th>Titulo</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de fin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="participant: ${participants}">
+      <td th:text="${participant.mail}"></td>
+      <td th:text="${participant.fechaIni}"></td>
+      <td th:text="${participant.fechaFin}"></td>
+      <td th:text="${participant.comments}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/initiative/list/0}" class="btn btn-primary">Volver</a>
+</div>
+</body>
+</html>

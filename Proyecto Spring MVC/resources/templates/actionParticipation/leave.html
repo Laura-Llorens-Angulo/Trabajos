@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Abandonar la acción</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+  <h2>¿Seguro que quieres abandonar?</h2>
+  <form action="#" th:action="@{/actionParticipation/leave}" th:object="${actionParticipation}" method="post">
+    <div class="form-group">
+      <label for="titleAct">Título de la acción que vas a abandonar</label>
+      <input type="text" class="form-control" id="titleAct" th:value="${titleAct}" readonly="readonly">
+      <div class="form-row">
+        <div class="form-group col-md-6">
+          <label for="mail">E-mail con el que te unistes</label>
+          <input type="email" class="form-control" id="mail" th:field="*{mail}" readonly="readonly">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="fechaIni">Fecha en que te unistes</label>
+          <input type="date" class="form-control" id="fechaIni" th:field="*{fechaIni}" readonly="readonly"/>
+        </div>
+        <div class="form-group col-md-3">
+          <label for="fechaFin">Fecha en que abandonas (hoy)</label>
+          <input type="date" class="form-control" id="fechaFin" th:field="*{fechaFin}" readonly="readonly"/>
+        </div>
+      </div>
+      <div class="form-group d-flex align-items-center justify-content-between">
+        <input type="submit" class="btn btn-danger" value="Abandonar" />
+        <div class="flex-grow-1"></div>
+        <a th:href="@{/initiative/list/0}" class="btn btn-primary float-right">Volver</a>
+      </div>
+    </div>
+  </form>
+</div>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="es">
+<head>
+    <title>Detalles del SDG</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+    <form action="#" th:object="${SDG}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nombre">Título del SDG</label>
+                <input type="text" class="form-control" id="nombre" th:field="*{name}" readonly="readonly">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="relevance">Relevancia</label>
+                <input type="text" class="form-control" id="relevance" th:field="*{relevance}" readonly="readonly">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description">Descripción</label>
+            <input type="text" class="form-control" id="description" th:field="*{description}" readonly="readonly">
+        </div>
+        <div class="form-group">
+            <label>URL</label>
+            <a th:href="${SDG.URL}" class="form-control" readonly="readonly" th:text="${SDG.URL}"></a>
+        </div>
+
+        <div class="form-group d-flex align-items-center justify-content-between">
+            <div th:if="${!isSubscribed}">
+                <a th:href="@{/SDGSubscription/join/{codSDG}(codSDG=${SDG.codSDG})}" class="btn btn-primary">Suscribirme</a>
+            </div>
+            <div th:unless="${!isSubscribed}">
+                <a th:href="@{/SDGSubscription/leave/{codSDG}(codSDG=${SDG.codSDG})}" class="btn btn-primary">Desuscribirme</a>
+            </div>
+            <div class="flex-grow-1"></div>
+            <a th:href="${nextUrl}" class="btn btn-primary float-right">Volver</a>
+        </div>
+    </form>
+</div>
+</body>
+</html>

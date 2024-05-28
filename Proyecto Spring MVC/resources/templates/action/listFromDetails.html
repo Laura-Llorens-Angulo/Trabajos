@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Actions list</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Lista acciones de la iniciativa: <span th:text="${iniTitle}"></span></h1>
+  <div th:if="${!thereAreActions}">
+    Esta iniciativa no tiene acciones.
+    <a th:href="@{/initiative/info/{codInitiative}(codInitiative=${codInitiative})}" class="btn btn-primary float-right">Volver</a>
+
+  </div>
+  <div th:if="${thereAreActions}">
+
+    <table th:unless="${#lists.isEmpty(actions)}" class="table table-striped">
+      <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Fecha Ini</th>
+        <th>Fecha Fin</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="action: ${actions}">
+        <td th:text="${action.name}"></td>
+        <td th:text="${action.fechaIni}"></td>
+        <td th:text="${action.fechaFin}"></td>
+        <td>
+          <a th:href="@{/action/info/{codAction}(codAction=${action.codAction})}" class="btn btn-warning">Detalles</a>
+        </td>
+      </tr>
+      </tbody>
+    </table>
+    <div class="form-group d-flex align-items-center justify-content-between">
+      <div class="flex-grow-1"></div>
+      <a th:href="@{/initiative/info/{codInitiative}(codInitiative=${codInitiative})}" class="btn btn-primary float-right">Volver</a>
+    </div>
+  </div>
+</div>
+</body>
+</html>

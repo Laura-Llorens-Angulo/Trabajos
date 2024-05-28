@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Lista de iniciativas</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Lista de iniciativas</h1>
+  <div th:if="${#lists.isEmpty(initiatives)}">
+    No hay iniciativas en la base de datos.
+  </div>
+  <table th:unless="${#lists.isEmpty(initiatives)}" class="table table-striped">
+    <thead>
+    <tr>
+      <th>Correo del responsable</th>
+      <th>Título</th>
+      <th>Fecha de inicio</th>
+      <th>Fecha de fin</th>
+      <th>Estado</th>
+      <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="initiative: ${initiatives}">
+      <td th:text="${initiative.mailResponsable}"></td>
+      <td th:text="${initiative.title}"></td>
+      <td th:text="${initiative.fechaIni}"></td>
+      <td th:text="${initiative.fechaFin}"></td>
+      <td th:text="${initiative.state}"></td>
+      <td>
+        <a th:href="@{/initiative/info/{codInitiative}(codInitiative=${initiative.codInitiative})}" class="btn btn-warning">Detalles</a>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="form-group d-flex align-items-center justify-content-between">
+    <a th:if="${prevPage != -1}" th:href="@{/initiative/list/{prevPage}(prevPage=${prevPage})}" class="btn btn-primary">Anterior</a>
+    <span th:unless="${prevPage != -1}" class="btn btn-primary invisible"></span>
+    <p th:text="${currentPage + 1}" class="btn btn-primary"></p>
+    <a th:if="${nextPage != -1}" th:href="@{/initiative/list/{nextPage}(nextPage=${nextPage})}" class="btn btn-primary">Siguiente</a>
+    <span th:unless="${nextPage != -1}" class="btn btn-primary invisible"></span>
+  </div>
+</div>
+</body>
+</html>

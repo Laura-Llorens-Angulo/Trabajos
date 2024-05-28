@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+    <title>Actions list</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>Acciones suscritas</h1>
+    <div th:if="${subscribed != null and !subscribed}">
+        No está suscrito a ninguna iniciativa. Por favor, suscríbase a una iniciativa para ver sus acciones.
+    </div>
+    <div th:if="${subscribed != null and subscribed and #maps.isEmpty(actions)}">
+        Ninguna de las iniciativas a las que estás suscrito tiene acciones.
+    </div>
+    <table th:unless="${#maps.isEmpty(actions)}" class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Titulo iniciativa</th>
+            <th>Fecha inicio</th>
+            <th>Fecha fin</th>
+            <th></th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="entry: ${actions.entrySet()}">
+            <td th:text="${entry.key.name}"></td>
+            <td th:text="${entry.value[1]}"></td>
+            <td th:text="${entry.key.fechaIni}"></td>
+            <td th:text="${entry.key.fechaFin}"></td>
+            <td>
+                <a th:href="@{/action/info/{codAction}(codAction=${entry.key.codAction})}" class="btn btn-warning">Detalles</a>
+            </td>
+            <td>
+                <a th:href="@{/initiative/info/{codInitiative}(codInitiative=${entry.value[0]})}" class="btn btn-info">Detalles de la iniciativa</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group d-flex align-items-center justify-content-between">
+        <a th:if="${prevPage != -1}" th:href="@{/action/list/{prevPage}(prevPage=${prevPage})}" class="btn btn-primary">Anterior</a>
+        <span th:unless="${prevPage != -1}" class="btn btn-primary invisible"></span>
+        <p th:text="${currentPage + 1}" class="btn btn-primary"></p>
+        <a th:if="${nextPage != -1}" th:href="@{/action/list/{nextPage}(nextPage=${nextPage})}" class="btn btn-primary">Siguiente</a>
+        <span th:unless="${nextPage != -1}" class="btn btn-primary invisible"></span>
+    </div>
+
+</div>
+</body>
+</html>

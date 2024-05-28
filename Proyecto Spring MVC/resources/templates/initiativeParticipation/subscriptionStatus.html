@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Estado de suscripción</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+  <div th:if="${subscribed}">
+    <h2>¡Enhorabuena!</h2>
+    <p>Te has <strong>suscrito</strong> correctamente a la iniciativa <strong th:text="${initiative.title}"></strong></p>
+  </div>
+  <div th:unless="${subscribed}">
+    <h2>Fin de la suscripción</h2>
+    <p>Has <strong>abandonado</strong> correctamente la iniciativa <strong th:text="${initiative.title}"></strong></p>
+  </div>
+  <div class="form-group d-flex align-items-center justify-content-between">
+    <div class="flex-grow-1"></div>
+    <a th:href="@{/initiative/list/0}" class="btn btn-primary float-right">Volver</a>
+  </div>
+</div>
+</body>
+</html>

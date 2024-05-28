@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Lista participantes</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+  <h1>Lista participantes acción: <span th:text="${titleAct}"></span></h1>
+  <div th:if="${#maps.isEmpty(participations)}">
+    No hay participantes en tu acción
+  </div>
+  <table th:unless="${#maps.isEmpty(participations)}" class="table table-striped">
+    <thead>
+    <tr>
+      <th>E-mail</th>
+      <th>Nombre</th>
+      <th>Fecha de suscripción</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="participation: ${participations}">
+      <td th:text="${participation.key}"></td>
+      <td th:text="${participation.value.key}"></td>
+      <td th:text="${participation.value.value}"></td>
+    </tr>
+    </tbody>
+  </table>
+  <a th:href="@{/action/list/0}" class="btn btn-primary">Volver</a>
+</div>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      xmlns:th="http://www.w3.org/1999/xhtml"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+  <title>Unirse a la acción</title>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<div layout:fragment="content">
+  <h2>¿Seguro que quieres unirte?</h2>
+  <form action="#" th:action="@{/actionParticipation/join}" th:object="${actionParticipation}" method="post">
+    <div class="form-group">
+      <label for="titleAct">Título de la acción a la que te vas a unir</label>
+      <input type="text" class="form-control" id="titleAct" th:value="${titleAct}" readonly="readonly">
+      <div class="form-row">
+        <div class="form-group col-md-9">
+          <label for="mail">E-mail con el que te unirás</label>
+          <input type="email" class="form-control" id="mail" th:field="*{mail}" readonly="readonly">
+        </div>
+        <div class="form-group col-md-3">
+          <label for="fechaIni">Fecha en que te unistes (hoy)</label>
+          <input type="date" class="form-control" id="fechaIni" th:field="*{fechaIni}" readonly="readonly"/>
+        </div>
+      </div>
+      <div class="form-group d-flex align-items-center justify-content-between">
+        <input type="submit" class="btn btn-success" value="Participar" />
+        <div class="flex-grow-1"></div>
+        <a th:href="@{/action/list/0}" class="btn btn-primary float-right">Volver</a>
+      </div>
+    </div>
+  </form>
+
+</div>
+</body>
+</html>

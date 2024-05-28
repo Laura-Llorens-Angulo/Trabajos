@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{fragments/base}" lang="en">
+<head>
+    <title>SDGlist</title>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+</head>
+<body>
+<div layout:fragment="content">
+    <h1>SDGs list      <a href="../EUSdg" class="btn btn-info">SDGs globales</a></h1>
+    <div th:if="${#lists.isEmpty(SDGs)}">
+        No hay SDGs en la base de datos
+    </div>
+    <div th:unless="${#lists.isEmpty(SDGs)}">
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>Nombre</th>
+            <th>Descripción</th>
+            <th>Relevancia</th>
+            <th>URL</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="SDG: ${SDGs}">
+            <td th:text="${SDG.name}"></td>
+            <td th:text="${SDG.description}"></td>
+            <td th:text="${SDG.relevance}"></td>
+            <td><a th:href="${SDG.URL}" th:text="${SDG.URL}"></a></td>
+            <td th:if="${session.user != null and session.user.type.equals('Student')}">
+                <a th:href="@{/SDG/info/{codSDG}(codSDG=${SDG.codSDG})}" class="btn btn-primary">Opciones</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <div class="form-group d-flex align-items-center justify-content-between">
+        <a th:if="${prevPage != -1}" th:href="@{/SDG/list/{prevPage}(prevPage=${prevPage})}" class="btn btn-primary">Anterior</a>
+        <span th:unless="${prevPage != -1}" class="btn btn-primary invisible"></span>
+        <p th:text="${currentPage + 1}" class="btn btn-primary"></p>
+        <a th:if="${nextPage != -1}" th:href="@{/SDG/list/{nextPage}(nextPage=${nextPage})}" class="btn btn-primary">Siguiente</a>
+        <span th:unless="${nextPage != -1}" class="btn btn-primary invisible"></span>
+    </div>
+    </div>
+</div>
+</body>
+</html>

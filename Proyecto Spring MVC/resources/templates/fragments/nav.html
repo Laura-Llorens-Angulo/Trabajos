@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Nav</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"/>
+</head>
+<body>
+<nav class="nav nav-pills nav-justified" th:object="${session}">
+    <a class="nav-item nav-link" href="/index" th:href="@{/..}">Página principal</a>
+    <a class="nav-item nav-link" href="/SDG/list" th:href="@{/SDG/list/0}">SDGs</a>
+    <a class="nav-item nav-link" href="/initiative/list" th:href="@{/initiative/list/0}">Iniciativas</a>
+    <a th:if="${session.user != null and session.user.type.equals('Student')}" class="nav-item nav-link" href="/action/list" th:href="@{/action/list/0}">Mis acciones</a>
+    <a th:if="${session.user != null and session.user.type.equals('Student')}" class="nav-item nav-link" href="/initiative/Mylist" th:href="@{/initiative/Mylist/0}">Mis iniciativas</a>
+    <a th:if="${session.user != null and session.user.type.equals('OCDS-Staff')}" class="nav-item nav-link" href="/initiative/Pending" th:href="@{/initiative/Pending/0}">Iniciativas Pendientes</a>
+    <a th:if="${session.user != null}" class="nav-item nav-link active" href="/info" th:href="@{/info}" th:text="${session.user.name}">Nombre de usuario</a>
+    <a th:unless="${session.user != null}" class="nav-item nav-link active" href="/login" th:href="@{/login}">Iniciar sesión</a>
+</nav>
+</body>
+</html>
